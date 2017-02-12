@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Feb 12, 2017 2:00:17 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="db.Comment" table="comment" catalog="muzickifestivali" optimistic-lock="version">
+        <id name="idcomment" type="java.lang.Integer">
+            <column name="idcomment" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="festivalGroup" class="db.FestivalGroup" fetch="select">
+            <column name="festival_group_idfestival_group" not-null="true" />
+        </many-to-one>
+        <many-to-one name="user" class="db.User" fetch="select">
+            <column name="user_iduser" not-null="true" />
+        </many-to-one>
+        <property name="content" type="string">
+            <column name="content" not-null="true" />
+        </property>
+        <property name="rating" type="int">
+            <column name="rating" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

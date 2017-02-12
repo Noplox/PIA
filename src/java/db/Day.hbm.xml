@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Feb 12, 2017 2:00:17 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="db.Day" table="day" catalog="muzickifestivali" optimistic-lock="version">
+        <id name="idTicket" type="java.lang.Integer">
+            <column name="idTicket" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="festival" class="db.Festival" fetch="select">
+            <column name="festival_idfestival" not-null="true" />
+        </many-to-one>
+        <property name="day" type="int">
+            <column name="day" not-null="true" />
+        </property>
+        <property name="ticketsRemaining" type="int">
+            <column name="tickets_remaining" not-null="true" />
+        </property>
+        <property name="price" type="int">
+            <column name="price" not-null="true" />
+        </property>
+        <set name="reservations" table="reservation" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Ticket_idTicket" not-null="true" />
+            </key>
+            <one-to-many class="db.Reservation" />
+        </set>
+    </class>
+</hibernate-mapping>

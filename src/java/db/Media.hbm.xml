@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Feb 12, 2017 2:00:17 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="db.Media" table="media" catalog="muzickifestivali" optimistic-lock="version">
+        <id name="idmedia" type="java.lang.Integer">
+            <column name="idmedia" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="festivalGroup" class="db.FestivalGroup" fetch="select">
+            <column name="festival_group_idfestival_group" not-null="true" />
+        </many-to-one>
+        <property name="type" type="int">
+            <column name="type" not-null="true" />
+        </property>
+        <property name="approved" type="java.lang.Byte">
+            <column name="approved" />
+        </property>
+    </class>
+</hibernate-mapping>
